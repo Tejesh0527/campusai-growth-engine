@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>Admin Growth Analytics • CampusAI Growth Engine</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#EEF2FF',
+              100: '#E0E7FF',
+              500: '#6366F1',
+              600: '#4F46E5', // Primary Indigo
+              700: '#4338CA',
+            },
+            accent: {
+              50: '#F0F9FF',
+              500: '#0EA5E9', // Accent Sky Blue
+              600: '#0284C7',
+            },
+            success: {
+              50: '#ECFDF5',
+              500: '#10B981', // Success Green
+              600: '#059669',
+            },
+            navy: {
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 font-sans text-navy-900 antialiased flex min-h-screen">
+<!-- Left Sidebar SaaS Navigation -->
+<aside class="w-64 bg-slate-900 text-slate-300 flex-shrink-0 flex flex-col justify-between border-r border-slate-800 z-30 fixed inset-y-0 left-0 lg:static">
+<div class="flex flex-col">
+<!-- App Brand & Tagline -->
+<div class="px-5 py-5 border-b border-slate-800/80"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-500 flex items-center justify-center text-white font-display font-extrabold shadow-md shadow-brand-600/30 text-lg">⚡</div><div><div class="flex items-center gap-1.5"><span class="font-display font-bold text-white text-base tracking-tight">CampusAI Growth Engine</span></div><p class="text-[11px] text-slate-400 font-medium">Campus Campaign Analytics</p></div></div><p class="text-[11px] text-slate-400 mt-3.5 leading-snug italic border-l-2 border-brand-500 pl-2">"Turn campus communities into measurable growth."</p></div>
+<!-- Navigation Links -->
+<nav class="p-3.5 space-y-1"><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold bg-brand-600 text-white shadow-sm transition-colors group" href="#"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Overview</span><span class="ml-auto w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors" href="#"><svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Workshop Registration</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors" href="#"><svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Ambassador Hub</span><span class="ml-auto text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 font-semibold">18 Reps</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors" href="#"><svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Marketing Assistant</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-colors" href="#"><svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Campaign Planner</span><span class="ml-auto text-[10px] px-1.5 py-0.5 rounded bg-brand-900/60 text-brand-300 font-semibold">7-Day</span></a></nav>
+</div>
+<!-- User Profile Footer -->
+<div class="p-3.5 border-t border-slate-800">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800/60">
+<img alt="Rohit Verma" class="w-9 h-9 rounded-full object-cover border border-slate-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6BPXecqa3rhRgADDWLlrKXitMWerwD6b76yJKzvYoXUgIjgPt-0QeYqLFXwadk8-dLfU4Y9uYpBJ3huDR1Bt3mlA-Y9sZ5zE-HcIFZlnH1oFCX05RBIVRy2SY3Nt_J62WhJ3wnuMSvcc8KX72StG7Jf8lCFLBWnYitODkwxFnR5nf2SNi5uVINswA_GDTqWP-Zws1tk7W8rIhxcEFO6B-dYU1ncRJmKxm3j7i5gg"/>
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-semibold text-white truncate">Rohit Verma</span>
+<span class="text-[11px] text-slate-400 truncate">Growth Lead • NxtWave</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content View Area -->
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- Top Navigation Bar -->
+<header class="bg-white border-b border-slate-200/80 sticky top-0 z-20 px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 shadow-sm"><div class="flex items-center gap-3"><div class="flex items-center gap-2.5"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-300"><span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>Simulation</span><span class="hidden sm:inline-block text-xs font-medium text-slate-500">Campaign: <strong class="text-navy-900 font-semibold">NxtWave AI Workshop Cohort '25</strong></span></div></div><div class="flex items-center gap-3 flex-wrap"><div class="relative"><button class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-navy-800 text-xs font-semibold rounded-lg border border-slate-200 transition-colors"><svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Last 7 Days (Sprint View)</span><svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div><button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs shadow-sm transition-all" id="topExportCsvBtn" onclick="alert('Export Report: Generating simulated PDF/CSV sprint metrics summary report for NxtWave AI Workshop Cohort 25.');"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 16.5V16.5m-18 0V7.5a2.25 2.25 0 012.25-2.25h6m-8.25 11.25l7.5-7.5m0 0l7.5 7.5m-7.5-7.5v12" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Export Report</span></button></div></header>
+<!-- Page Content Container -->
+<main class="p-6 space-y-6">
+<!-- Prominent Evaluation Banner -->
+<div class="bg-gradient-to-r from-brand-600 via-indigo-600 to-accent-600 rounded-xl p-4 text-white shadow-md flex flex-col md:flex-row md:items-center justify-between gap-3"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center flex-shrink-0 text-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div><div class="flex items-center gap-2 flex-wrap"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-extrabold uppercase tracking-wider bg-white/20 text-white border border-white/30">DEMO DATA — SIMULATED METRICS</span><span class="text-xs font-semibold text-indigo-100">• Target: 500 Registrations</span></div><p class="text-xs text-indigo-100 mt-1">Currently on <strong>Day 4 of 7</strong>. Pacing at <strong>56.8%</strong> target completion (284 / 500) with ₹880 remaining runway.</p></div></div><div class="flex items-center gap-2 self-start md:self-auto"><span class="text-xs bg-white text-brand-700 font-bold px-3 py-1.5 rounded-lg shadow-sm">Pacing: On Track (+4% velocity)</span></div></div>
+<!-- KPI Cards with Explicit Requirements -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+<!-- Metric 1: Total Registrations -->
+<div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow transition-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Registrations</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">DEMO</span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-2xl font-extrabold text-navy-900 font-display">284</span>
+<span class="text-sm font-semibold text-slate-500">/ 500 Goal</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6 0 3.375 3.375 0 016 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<span class="font-semibold text-brand-600">56.8% Completed</span>
+<span class="font-medium text-slate-500">216 remaining</span>
+</div>
+<div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+<div class="h-full bg-brand-600 rounded-full transition-all duration-700" style="width: 56.8%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric 2: Referral-driven Registrations -->
+<div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow transition-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Referral-Driven</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">DEMO</span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-2xl font-extrabold text-navy-900 font-display">146</span>
+<span class="text-xs font-bold text-accent-600 bg-accent-50 px-2 py-0.5 rounded-full">51.4% Share</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-accent-50 text-accent-500 flex items-center justify-center">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">Student Reps active:</span>
+<span class="font-bold text-navy-900">18 Ambassadors</span>
+</div>
+<div class="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+<span class="text-emerald-500 font-bold">↑ 2.1x</span> viral peer amplification factor
+            </div>
+</div>
+</div>
+<!-- Metric 3: Campaign Expenditure -->
+<div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow transition-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Campaign Expenditure</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">DEMO</span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-2xl font-extrabold text-navy-900 font-display">₹1,120</span>
+<span class="text-sm font-semibold text-slate-500">/ ₹2,000 budget</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<span class="text-slate-500">₹880 remaining (44%)</span>
+<span class="font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">Pacing Clean</span>
+</div>
+<div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+<div class="h-full bg-indigo-500 rounded-full" style="width: 56%;"></div>
+</div>
+</div>
+</div>
+<!-- Metric 4: Cost per Registration -->
+<div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm hover:shadow transition-shadow flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Cost Per Registration</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-slate-100 text-slate-600">DEMO</span>
+</div>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-2xl font-extrabold text-navy-900 font-display">₹3.94</span>
+<span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Target &lt; ₹4.00</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.001-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500">CAC Efficiency:</span>
+<span class="font-bold text-emerald-600">Optimal (₹0.06 buffer)</span>
+</div>
+<div class="text-[11px] text-slate-400 mt-1">Ambassador CAC lowest at ₹2.60</div>
+</div>
+</div>
+</div>
+<!-- Visualisations Section: Charts Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<!-- Left: Daily Registrations Line/Bar Chart (Days 1-7 actual vs projected) -->
+<div class="lg:col-span-7 bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-display font-bold text-base text-navy-900">Daily Registrations Velocity</h3>
+<span class="text-[11px] font-semibold text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full">Days 1–7</span>
+<span class="text-[10px] text-slate-400 font-medium">DEMO DATA</span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">Sprint pacing: Days 1–4 Actuals (284) vs Days 5–7 Projected (236)</p>
+</div>
+<div class="flex items-center gap-3 text-xs font-medium text-slate-600">
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-brand-600"></span> Actual</span>
+<span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-200 border border-dashed border-slate-400"></span> Projected</span>
+</div>
+</div>
+<!-- Chart Area -->
+<div class="py-6">
+<div class="h-56 w-full relative flex items-end justify-between gap-2 sm:gap-4 px-2">
+<!-- Grid line overlays -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-40">
+<div class="border-b border-slate-200 w-full flex justify-end text-[10px] text-slate-400 pr-1">150</div>
+<div class="border-b border-slate-200 w-full flex justify-end text-[10px] text-slate-400 pr-1">100</div>
+<div class="border-b border-slate-200 w-full flex justify-end text-[10px] text-slate-400 pr-1">50</div>
+<div class="border-b border-slate-200 w-full flex justify-end text-[10px] text-slate-400 pr-1">0</div>
+</div>
+<!-- Day 1 Actual -->
+<div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+<span class="text-[11px] font-bold text-slate-600 group-hover:text-brand-600">32</span>
+<div class="w-full max-w-[42px] bg-brand-600/70 hover:bg-brand-600 rounded-t transition-all duration-300" style="height: 48px;"></div>
+<span class="text-xs font-medium text-slate-500">Day 1</span>
+</div>
+<!-- Day 2 Actual -->
+<div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+<span class="text-[11px] font-bold text-slate-600 group-hover:text-brand-600">54</span>
+<div class="w-full max-w-[42px] bg-brand-600/80 hover:bg-brand-600 rounded-t transition-all duration-300" style="height: 82px;"></div>
+<span class="text-xs font-medium text-slate-500">Day 2</span>
+</div>
+<!-- Day 3 Actual -->
+<div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+<span class="text-[11px] font-bold text-slate-600 group-hover:text-brand-600">76</span>
+<div class="w-full max-w-[42px] bg-brand-600/90 hover:bg-brand-600 rounded-t transition-all duration-300" style="height: 114px;"></div>
+<span class="text-xs font-medium text-slate-500">Day 3</span>
+</div>
+<!-- Day 4 Actual (Today) -->
+<div class="flex-1 flex flex-col items-center gap-2 z-10 relative group">
+<div class="absolute -top-7 bg-brand-600 text-white text-[11px] font-extrabold px-1.5 py-0.5 rounded shadow">
+                  122 (Today)
+                </div>
+<div class="w-full max-w-[42px] bg-brand-600 rounded-t shadow-md transition-all duration-300" style="height: 184px;"></div>
+<span class="text-xs font-bold text-brand-600">Day 4</span>
+</div>
+<!-- Day 5 Projected -->
+<div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+<span class="text-[11px] font-semibold text-slate-400 italic">~110</span>
+<div class="w-full max-w-[42px] bg-slate-200 border-2 border-dashed border-brand-300 rounded-t hover:bg-slate-300 transition-all duration-300" style="height: 165px;"></div>
+<span class="text-xs font-medium text-slate-400">Day 5*</span>
+</div>
+<!-- Day 6 Projected -->
+<div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+<span class="text-[11px] font-semibold text-slate-400 italic">~70</span>
+<div class="w-full max-w-[42px] bg-slate-200 border-2 border-dashed border-brand-300 rounded-t hover:bg-slate-300 transition-all duration-300" style="height: 105px;"></div>
+<span class="text-xs font-medium text-slate-400">Day 6*</span>
+</div>
+<!-- Day 7 Projected -->
+<div class="flex-1 flex flex-col items-center gap-2 z-10 group">
+<span class="text-[11px] font-semibold text-slate-400 italic">~56</span>
+<div class="w-full max-w-[42px] bg-slate-200 border-2 border-dashed border-brand-300 rounded-t hover:bg-slate-300 transition-all duration-300" style="height: 84px;"></div>
+<span class="text-xs font-medium text-slate-400">Day 7*</span>
+</div>
+</div>
+</div>
+<!-- Bottom Stat Strip -->
+<div class="bg-slate-50 rounded-lg p-3 grid grid-cols-3 gap-2 text-center border border-slate-100">
+<div>
+<span class="text-[11px] text-slate-500 font-medium">Recorded Volume</span>
+<p class="text-sm font-bold text-navy-900 mt-0.5">284 Students</p>
+</div>
+<div>
+<span class="text-[11px] text-slate-500 font-medium">Daily Avg Run-Rate</span>
+<p class="text-sm font-bold text-brand-600 mt-0.5">71 / day</p>
+</div>
+<div>
+<span class="text-[11px] text-slate-500 font-medium">Projected Total</span>
+<p class="text-sm font-bold text-emerald-600 mt-0.5">520 (Goal: 500)</p>
+</div>
+</div>
+</div>
+<!-- Right: Acquisition Channels & Referral Contribution -->
+<div class="lg:col-span-5 flex flex-col justify-between space-y-4"><div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex items-center justify-between pb-3"><div class="flex items-center gap-2"><h3 class="font-display font-bold text-base text-navy-900">Channel Performance</h3><span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">DEMO DATA</span></div><span class="text-xs font-semibold text-brand-600">3 Channels Active</span></div><div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm hover:shadow transition-shadow"><div class="flex items-center justify-between text-xs mb-1.5"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-brand-600"></span><span class="font-bold text-navy-900 text-sm">Student Ambassadors</span></div><span class="font-extrabold text-navy-900 text-sm">146 <span class="text-xs font-semibold text-emerald-600">(73% achieved)</span></span></div><div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden mb-2"><div class="h-full bg-brand-600 rounded-full" style="width: 73%;"></div></div><div class="grid grid-cols-3 gap-1 text-[11px] text-slate-500 pt-1 border-t border-slate-100"><div>Target: <strong class="text-navy-900">200</strong></div><div>Spend: <strong class="text-navy-900">₹380</strong></div><div class="text-right">CAC: <strong class="text-brand-600 font-bold">₹2.60</strong></div></div></div><div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm hover:shadow transition-shadow"><div class="flex items-center justify-between text-xs mb-1.5"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-accent-500"></span><span class="font-bold text-navy-900 text-sm">College Communities</span></div><span class="font-extrabold text-navy-900 text-sm">112 <span class="text-xs font-semibold text-brand-600">(56% achieved)</span></span></div><div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden mb-2"><div class="h-full bg-accent-500 rounded-full" style="width: 56%;"></div></div><div class="grid grid-cols-3 gap-1 text-[11px] text-slate-500 pt-1 border-t border-slate-100"><div>Target: <strong class="text-navy-900">200</strong></div><div>Spend: <strong class="text-navy-900">₹520</strong></div><div class="text-right">CAC: <strong class="text-accent-600 font-bold">₹4.64</strong></div></div></div><div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm hover:shadow transition-shadow"><div class="flex items-center justify-between text-xs mb-1.5"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-slate-400"></span><span class="font-bold text-navy-900 text-sm">Technical Clubs</span></div><span class="font-extrabold text-navy-900 text-sm">26 <span class="text-xs font-semibold text-slate-600">(26% achieved)</span></span></div><div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden mb-2"><div class="h-full bg-slate-400 rounded-full" style="width: 26%;"></div></div><div class="grid grid-cols-3 gap-1 text-[11px] text-slate-500 pt-1 border-t border-slate-100"><div>Target: <strong class="text-navy-900">100</strong></div><div>Spend: <strong class="text-navy-900">₹220</strong></div><div class="text-right">CAC: <strong class="text-slate-700 font-bold">₹8.46</strong></div></div></div></div>
+</div>
+<!-- Registration Conversion Funnel Section -->
+<div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-display font-bold text-base text-navy-900">Registration Conversion Funnel</h3>
+<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">DEMO DATA</span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">End-to-end student conversion efficiency across the 4 sprint days</p>
+</div>
+<span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 self-start sm:self-auto">
+            Overall Funnel CR: 6.76% (Target &gt; 5.0%)
+          </span>
+</div>
+<!-- Funnel Stages Graphic -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-5">
+<!-- Stage 1 -->
+<div class="relative bg-slate-50 hover:bg-slate-100/80 transition-colors p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Stage 1</span>
+<span class="text-xs font-semibold text-slate-400">100%</span>
+</div>
+<h4 class="text-sm font-bold text-navy-900 mt-1">Impressions</h4>
+<p class="text-2xl font-extrabold text-navy-900 font-display mt-2">4,200</p>
+<p class="text-[11px] text-slate-500 mt-0.5">Campus posters &amp; WhatsApp broadcasts</p>
+</div>
+<div class="mt-4 pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-500">
+<span>Drop-off</span>
+<span class="font-semibold text-slate-700">56.2%</span>
+</div>
+</div>
+<!-- Stage 2 -->
+<div class="relative bg-slate-50 hover:bg-slate-100/80 transition-colors p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-brand-600">Stage 2</span>
+<span class="text-xs font-semibold text-brand-600">43.8% CTR</span>
+</div>
+<h4 class="text-sm font-bold text-navy-900 mt-1">Page Views</h4>
+<p class="text-2xl font-extrabold text-navy-900 font-display mt-2">1,840</p>
+<p class="text-[11px] text-slate-500 mt-0.5">Workshop landing page visits</p>
+</div>
+<div class="mt-4 pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-500">
+<span>Drop-off</span>
+<span class="font-semibold text-slate-700">72.3%</span>
+</div>
+</div>
+<!-- Stage 3 -->
+<div class="relative bg-slate-50 hover:bg-slate-100/80 transition-colors p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-accent-600">Stage 3</span>
+<span class="text-xs font-semibold text-accent-600">27.7% Start</span>
+</div>
+<h4 class="text-sm font-bold text-navy-900 mt-1">Form Starts</h4>
+<p class="text-2xl font-extrabold text-navy-900 font-display mt-2">510</p>
+<p class="text-[11px] text-slate-500 mt-0.5">Registration modal initialized</p>
+</div>
+<div class="mt-4 pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-500">
+<span>Drop-off</span>
+<span class="font-semibold text-slate-700">44.3%</span>
+</div>
+</div>
+<!-- Stage 4 -->
+<div class="relative bg-gradient-to-br from-brand-50 to-emerald-50 p-4 rounded-xl border border-brand-200 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold uppercase tracking-wider text-emerald-700">Final Stage</span>
+<span class="text-xs font-bold text-emerald-700 bg-white px-1.5 py-0.5 rounded shadow-xs">55.7% Completion</span>
+</div>
+<h4 class="text-sm font-bold text-navy-900 mt-1">Completed</h4>
+<p class="text-2xl font-extrabold text-emerald-700 font-display mt-2">284</p>
+<p class="text-[11px] text-slate-600 mt-0.5">Verified workshop registrants</p>
+</div>
+<div class="mt-4 pt-2 border-t border-brand-200 flex items-center justify-between text-xs">
+<span class="text-slate-600 font-medium">Efficiency:</span>
+<span class="font-extrabold text-emerald-700">High Intent</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Registration Table Section with Controls & Empty State Toggle -->
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+<!-- Table Header & Filter Bar -->
+<div class="p-5 border-b border-slate-100 flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-display font-bold text-base text-navy-900">Registration Records Stream</h3>
+<span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-brand-50 text-brand-600 border border-brand-200" id="recordCountBadge">
+                  284 Total
+                </span>
+<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">DEMO DATA</span>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">Detailed records across campus ambassadors, WhatsApp nodes, and technical societies</p>
+</div>
+<!-- Empty State Simulation Toggle & Export -->
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold transition-colors" id="toggleEmptyStateBtn">
+<svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Toggle Empty State</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-navy-900 hover:bg-slate-800 text-white text-xs font-semibold shadow-sm transition-colors" id="tableExportCsvBtn">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 16.5V16.5m-18 0V7.5a2.25 2.25 0 012.25-2.25h6m-8.25 11.25l7.5-7.5m0 0l7.5 7.5m-7.5-7.5v12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Controls Filter Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-3 pt-2">
+<!-- Search Input -->
+<div class="md:col-span-6 relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<input class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-navy-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition-all" id="searchInput" placeholder="Search by student name, college, email, or referral code..." type="text"/>
+</div>
+<!-- Filter by Acquisition Channel Dropdown -->
+<div class="md:col-span-3">
+<select class="w-full py-2 px-3 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-navy-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600" id="channelFilter"><option value="all">All Channels</option><option value="Student Ambassador">Student Ambassador (146)</option><option value="WhatsApp Community">College Communities (112)</option><option value="Tech Club">Technical Clubs (26)</option></select>
+</div>
+<!-- Filter by Date Dropdown -->
+<div class="md:col-span-3">
+<select class="w-full py-2 px-3 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-navy-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600" id="dateFilter">
+<option value="all">Filter by Date (All 7 Days)</option>
+<option value="Today">Day 4 - Today (Oct 24)</option>
+<option value="Yesterday">Day 3 - Yesterday (Oct 23)</option>
+<option value="Oct 22">Day 2 - Oct 22</option>
+<option value="Oct 21">Day 1 - Oct 21</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Table View Container -->
+<div class="overflow-x-auto w-full" id="tableContainer">
+<table class="w-full text-left text-xs">
+<thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase tracking-wider font-semibold">
+<tr>
+<th class="py-3 px-4">Student Name</th>
+<th class="py-3 px-4">College</th>
+<th class="py-3 px-4">Registration Date</th>
+<th class="py-3 px-4">Acquisition Channel</th>
+<th class="py-3 px-4">Referral Code</th>
+<th class="py-3 px-4">Registration Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-navy-900" id="tableBody">
+<!-- Student 1 -->
+<tr class="table-record hover:bg-slate-50/80 transition-colors" data-channel="Student Ambassador" data-date="Today">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-xs">
+                      PN
+                    </div>
+<div>
+<span class="font-bold text-navy-900 block">Pooja Nair</span>
+<span class="text-slate-500 text-[11px]">p.nair@rvce.edu.in</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-semibold text-navy-900 block">RV College of Engineering</span>
+<span class="text-slate-400 text-[11px]">CSE • 2025 Batch</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-600">
+                  Today, 02:45 PM
+                </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-brand-50 text-brand-700 border border-brand-200">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span>
+                    Student Ambassador
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<code class="px-2 py-0.5 rounded bg-slate-100 font-mono text-[11px] font-semibold text-slate-700">NXT-RV-04</code>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      ✓ Verified Email
+                    </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-teal-50 text-teal-700 border border-teal-200">
+                      WhatsApp Joined
+                    </span>
+</div>
+</td>
+</tr>
+<!-- Student 2 -->
+<tr class="table-record hover:bg-slate-50/80 transition-colors" data-channel="WhatsApp Community" data-date="Today">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-accent-100 text-accent-700 font-bold flex items-center justify-center text-xs">
+                      AK
+                    </div>
+<div>
+<span class="font-bold text-navy-900 block">Ananya Kulkarni</span>
+<span class="text-slate-500 text-[11px]">ananya.k@smail.iitm.ac.in</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-semibold text-navy-900 block">IIT Madras</span>
+<span class="text-slate-400 text-[11px]">Data Science &amp; AI</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-600">
+                  Today, 01:20 PM
+                </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-sky-50 text-sky-700 border border-sky-200">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-500"></span>
+                    WhatsApp Community
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="text-slate-400 font-mono text-[11px]">Direct / Open</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      ✓ Verified Email
+                    </span>
+</div>
+</td>
+</tr>
+<!-- Student 3 -->
+<tr class="table-record hover:bg-slate-50/80 transition-colors" data-channel="Student Ambassador" data-date="Today">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-xs">
+                      SM
+                    </div>
+<div>
+<span class="font-bold text-navy-900 block">Siddharth Menon</span>
+<span class="text-slate-500 text-[11px]">f20220811@hyderabad.bits-pilani.ac.in</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-semibold text-navy-900 block">BITS Pilani (Hyderabad)</span>
+<span class="text-slate-400 text-[11px]">Computer Science • 2026</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-600">
+                  Today, 11:50 AM
+                </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-brand-50 text-brand-700 border border-brand-200">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span>
+                    Student Ambassador
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<code class="px-2 py-0.5 rounded bg-slate-100 font-mono text-[11px] font-semibold text-slate-700">NXT-BP-02</code>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      ✓ Verified Email
+                    </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-teal-50 text-teal-700 border border-teal-200">
+                      WhatsApp Joined
+                    </span>
+</div>
+</td>
+</tr>
+<!-- Student 4 -->
+<tr class="table-record hover:bg-slate-50/80 transition-colors" data-channel="Tech Club" data-date="Yesterday">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">
+                      DR
+                    </div>
+<div>
+<span class="font-bold text-navy-900 block">Deepak Rajan</span>
+<span class="text-slate-500 text-[11px]">108121045@nitt.edu</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-semibold text-navy-900 block">NIT Trichy</span>
+<span class="text-slate-400 text-[11px]">ECE Society Lead</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-600">
+                  Yesterday, 06:15 PM
+                </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-300">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+                    Tech Club
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<code class="px-2 py-0.5 rounded bg-slate-100 font-mono text-[11px] font-semibold text-slate-700">NITT-ROBO-CLUB</code>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      ✓ Verified Email
+                    </span>
+</div>
+</td>
+</tr>
+<!-- Student 5 -->
+<tr class="table-record hover:bg-slate-50/80 transition-colors" data-channel="Student Ambassador" data-date="Yesterday">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-xs">
+                      TD
+                    </div>
+<div>
+<span class="font-bold text-navy-900 block">Tanvi Deshmukh</span>
+<span class="text-slate-500 text-[11px]">deshmukhtp21.comp@coep.ac.in</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-semibold text-navy-900 block">COEP Tech University</span>
+<span class="text-slate-400 text-[11px]">Computer Engineering • 2025</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-600">
+                  Yesterday, 04:30 PM
+                </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-brand-50 text-brand-700 border border-brand-200">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-600"></span>
+                    Student Ambassador
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<code class="px-2 py-0.5 rounded bg-slate-100 font-mono text-[11px] font-semibold text-slate-700">NXT-COEP-01</code>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      ✓ Verified Email
+                    </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-teal-50 text-teal-700 border border-teal-200">
+                      WhatsApp Joined
+                    </span>
+</div>
+</td>
+</tr>
+<!-- Student 6 -->
+<tr class="table-record hover:bg-slate-50/80 transition-colors" data-channel="WhatsApp Community" data-date="Oct 22">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-accent-100 text-accent-700 font-bold flex items-center justify-center text-xs">
+                      RR
+                    </div>
+<div>
+<span class="font-bold text-navy-900 block">Rohan Roy</span>
+<span class="text-slate-500 text-[11px]">rohan.roy2023@vitstudent.ac.in</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-semibold text-navy-900 block">VIT Vellore</span>
+<span class="text-slate-400 text-[11px]">Information Technology</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-600">
+                  Oct 22, 10:14 AM
+                </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-sky-50 text-sky-700 border border-sky-200">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-500"></span>
+                    WhatsApp Community
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="text-slate-400 font-mono text-[11px]">Direct / Open</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      ✓ Verified Email
+                    </span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Empty State Preview (Hidden by default, interactive via toggle or filters) -->
+<div class="hidden p-12 text-center flex-col items-center justify-center" id="emptyState">
+<div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mb-3">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m6.75 12l-3-3m0 0l-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h4 class="font-display font-bold text-navy-900 text-base">No registration records found</h4>
+<p class="text-xs text-slate-500 max-w-sm mt-1">
+            We couldn't find any registered applicants matching your filter criteria. Try adjusting your search query, acquisition channel, or date range.
+          </p>
+<button class="mt-4 px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold shadow-sm transition-colors" id="resetFiltersBtn">
+            Reset Filters
+          </button>
+</div>
+<!-- Pagination & Showing Counter Footer -->
+<div class="p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+<div>
+            Showing <strong class="text-navy-900" id="visibleCountText">6</strong> of <strong class="text-navy-900">284</strong> Registrations (Demo Sample)
+          </div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded border border-slate-300 bg-white text-slate-400 cursor-not-allowed text-xs font-medium" disabled="">Prev</button>
+<button class="px-2.5 py-1 rounded bg-brand-600 text-white font-bold text-xs">1</button>
+<button class="px-2.5 py-1 rounded border border-slate-300 bg-white hover:bg-slate-100 text-navy-900 text-xs font-medium">2</button>
+<button class="px-2.5 py-1 rounded border border-slate-300 bg-white hover:bg-slate-100 text-navy-900 text-xs font-medium">3</button>
+<span class="px-1 text-slate-400">...</span>
+<button class="px-2.5 py-1 rounded border border-slate-300 bg-white hover:bg-slate-100 text-navy-900 text-xs font-medium">48</button>
+<button class="px-2.5 py-1 rounded border border-slate-300 bg-white hover:bg-slate-100 text-navy-900 text-xs font-medium">Next</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Attribution -->
+<footer class="mt-auto px-6 py-4 bg-white border-t border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="font-bold text-navy-900">CampusAI Growth Engine</span>
+<span>•</span>
+<span>NxtWave EdTech Recruitment Sprint Evaluation</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1 text-emerald-600 font-medium">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+          Sprint Day 4 Active
+        </span>
+<span>© 2025 CampusAI. All metrics designated DEMO DATA.</span>
+</div>
+</footer>
+</div>
+<!-- Client-side script for filters, empty-state toggle, and CSV alerts -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const channelFilter = document.getElementById('channelFilter');
+      const dateFilter = document.getElementById('dateFilter');
+      const tableRows = document.querySelectorAll('.table-record');
+      const tableContainer = document.getElementById('tableContainer');
+      const emptyState = document.getElementById('emptyState');
+      const toggleEmptyStateBtn = document.getElementById('toggleEmptyStateBtn');
+      const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+      const visibleCountText = document.getElementById('visibleCountText');
+      const topExportBtn = document.getElementById('topExportCsvBtn');
+      const tableExportBtn = document.getElementById('tableExportCsvBtn');
+
+      let forcedEmpty = false;
+
+      function updateTable() {
+        if (forcedEmpty) {
+          tableContainer.classList.add('hidden');
+          emptyState.classList.remove('hidden');
+          emptyState.classList.add('flex');
+          if (visibleCountText) visibleCountText.textContent = '0';
+          return;
+        }
+
+        const query = (searchInput?.value || '').toLowerCase();
+        const selectedChannel = channelFilter?.value || 'all';
+        const selectedDate = dateFilter?.value || 'all';
+
+        let visibleCount = 0;
+
+        tableRows.forEach(row => {
+          const rowText = row.innerText.toLowerCase();
+          const rowChannel = row.getAttribute('data-channel') || '';
+          const rowDate = row.getAttribute('data-date') || '';
+
+          const matchQuery = !query || rowText.includes(query);
+          const matchChannel = selectedChannel === 'all' || rowChannel === selectedChannel;
+          const matchDate = selectedDate === 'all' || rowDate === selectedDate;
+
+          if (matchQuery && matchChannel && matchDate) {
+            row.style.display = '';
+            visibleCount++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (visibleCountText) {
+          visibleCountText.textContent = visibleCount;
+        }
+
+        if (visibleCount === 0) {
+          tableContainer.classList.add('hidden');
+          emptyState.classList.remove('hidden');
+          emptyState.classList.add('flex');
+        } else {
+          tableContainer.classList.remove('hidden');
+          emptyState.classList.add('hidden');
+          emptyState.classList.remove('flex');
+        }
+      }
+
+      searchInput?.addEventListener('input', updateTable);
+      channelFilter?.addEventListener('change', updateTable);
+      dateFilter?.addEventListener('change', updateTable);
+
+      toggleEmptyStateBtn?.addEventListener('click', () => {
+        forcedEmpty = !forcedEmpty;
+        toggleEmptyStateBtn.classList.toggle('bg-brand-50', forcedEmpty);
+        toggleEmptyStateBtn.classList.toggle('border-brand-500', forcedEmpty);
+        toggleEmptyStateBtn.classList.toggle('text-brand-700', forcedEmpty);
+        updateTable();
+      });
+
+      resetFiltersBtn?.addEventListener('click', () => {
+        forcedEmpty = false;
+        toggleEmptyStateBtn?.classList.remove('bg-brand-50', 'border-brand-500', 'text-brand-700');
+        if (searchInput) searchInput.value = '';
+        if (channelFilter) channelFilter.value = 'all';
+        if (dateFilter) dateFilter.value = 'all';
+        updateTable();
+      });
+
+      const handleCsvExport = () => {
+        alert('CSV Export generated: 284 registrant records exported with status flags to campusai_registrations_sprint.csv (DEMO DATA)');
+      };
+
+      topExportBtn?.addEventListener('click', handleCsvExport);
+      tableExportBtn?.addEventListener('click', handleCsvExport);
+    });
+  </script>
+</body></html>

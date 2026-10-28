@@ -1,0 +1,15 @@
+node_modules/
+dist/
+data/store.json
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.local
+.env.*.local
+.agents/
+skills-lock.json
+stitch_employee_attendance_analytics_api/
+scripts/
