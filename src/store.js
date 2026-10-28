@@ -266,7 +266,7 @@ export const INITIAL_SAMPLE_RECORDS = [
 export const WORKSHOP_TITLE = 'Build Your First AI Project in 60 Minutes';
 
 // ─── STORE CLASS ──────────────────────────────────────────────────────────────
-class GrowthStore {
+export class GrowthStore {
   constructor() {
     this.storageKey = 'campusai_growth_engine_v2';
     this.listeners = new Set();

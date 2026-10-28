@@ -61,7 +61,7 @@ export function validateReferralCode(code) {
     return {
       valid: true,
       code: normalized,
-      details: { ambassador: 'Campus Partner Rep', college: 'Partner Institution', type: 'partner' },
+      details: { ambassador: 'Campus Ambassador Rep', college: 'Participating College', type: 'ambassador' },
       message: 'Active Campus Referral Code'
     };
   }

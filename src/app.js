@@ -197,7 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateGeneratedReferralLink() {
     if (!ambassadorSelect || !generatedReferralLink) return;
     const selectedCode = ambassadorSelect.value;
-    const origin = window.location.origin || 'http://localhost:3000';
+    const origin = (typeof window !== 'undefined' && window.location.origin && window.location.origin !== 'null')
+      ? window.location.origin
+      : 'https://campusai-growth-engine.onrender.com';
     const link = `${origin}/?screen=registration&ref=${selectedCode}`;
     generatedReferralLink.value = link;
   }
@@ -361,29 +363,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // MARKETING ASSISTANT (PROTOTYPE - TONE GENERATION, COPY, WHATSAPP SHARE)
   // =========================================================================
-  const appOrigin = typeof window !== 'undefined' && window.location.origin
+  const appOrigin = typeof window !== 'undefined' && window.location.origin && window.location.origin !== 'null'
     ? window.location.origin
-    : 'http://localhost:3000';
+    : 'https://campusai-growth-engine.onrender.com';
 
   const MARKETING_TEMPLATES = {
     t1: {
       friendly: `🚀 *Free AI Workshop by NxtWave!*\n\nHey everyone! Join a free 60-min live workshop:\n*"Build Your First AI Project in 60 Minutes"*\n\n🎯 What you'll build: a working AI project in 1 hour.\n100% Free — no prior experience needed!\n\n🎟️ Register here:\n${appOrigin}/?screen=registration\n\nOnly 500 seats across all campuses. Register now! ⚡`,
       professional: `📢 *Official Announcement: Hands-on AI Workshop by NxtWave*\n\nDear students,\n\nRegistrations are now open for the live workshop:\n*"Build Your First AI Project in 60 Minutes"*\n\nKey highlights:\n• 60-minute practical project development\n• Guided by industry practitioners\n• 100% complimentary access for enrolled engineering students\n\nRegistration link:\n${appOrigin}/?screen=registration\n\nNote: Admissions are strictly capped at 500 across participating institutions.`,
-      energetic: `🔥 *LEVEL UP YOUR AI SKILLS IN 60 MINUTES!* ⚡\n\nStop watching tutorials — actually BUILD something!\nJoin NxtWave's high-energy masterclass:\n*"Build Your First AI Project in 60 Minutes"*\n\n💥 1 Hour. 1 Working AI Project. 0 Prior Experience Needed.\n\n⚡ Claim your free VIP seat before the 500-seat cap runs out:\n${appOrigin}/?screen=registration\n\nLet's build something epic! 🚀`
+      energetic: `🔥 *LEVEL UP YOUR AI SKILLS IN 60 MINUTES!* ⚡\n\nStop watching tutorials — actually BUILD something!\nJoin NxtWave's high-energy masterclass:\n*"Build Your First AI Project in 60 Minutes"*\n\n💥 1 Hour. 1 Working AI Project. 0 Prior Experience Needed.\n\n⚡ Claim your free seat before the 500-seat cap runs out:\n${appOrigin}/?screen=registration\n\nLet's build something epic! 🚀`
     },
     t2: {
       friendly: `Hey [Name]! 👋\n\nI'm sharing NxtWave's free 60-min live workshop:\n*"Build Your First AI Project in 60 Minutes"*\n\nYou'll build something real in 1 hour. 100% free.\n\nRegister with my referral link:\n${appOrigin}/?screen=registration&ref=[YOUR_CODE]\n\nLet me know if you sign up! 😊`,
-      professional: `Hello [Name],\n\nI wanted to share an exclusive educational opportunity from NxtWave:\n*"Build Your First AI Project in 60 Minutes"*\n\nThis 60-minute session delivers hands-on project creation for students looking to strengthen technical credentials.\n\nYou can access guaranteed registration via my campus ambassador pass:\n${appOrigin}/?screen=registration&ref=[YOUR_CODE]\n\nBest regards,\n[Your Name]`,
-      energetic: `Hey [Name]! Ready to build your first AI project this week? 💥\n\nNxtWave is hosting *"Build Your First AI Project in 60 Minutes"* and I've got priority ambassador passes!\n\n⚡ Skip the waitlist with my code:\n${appOrigin}/?screen=registration&ref=[YOUR_CODE]\n\nGrab a seat before all 500 slots vanish! Let's go! 🚀`
+      professional: `Hello [Name],\n\nI wanted to share an educational opportunity from NxtWave:\n*"Build Your First AI Project in 60 Minutes"*\n\nThis 60-minute session delivers hands-on project creation for students looking to strengthen technical skills.\n\nYou can access registration via my campus ambassador link:\n${appOrigin}/?screen=registration&ref=[YOUR_CODE]\n\nBest regards,\n[Your Name]`,
+      energetic: `Hey [Name]! Ready to build your first AI project this week? 💥\n\nNxtWave is hosting *"Build Your First AI Project in 60 Minutes"* and I've got an ambassador referral link!\n\n⚡ Sign up with my code:\n${appOrigin}/?screen=registration&ref=[YOUR_CODE]\n\nGrab a seat before all 500 slots vanish! Let's go! 🚀`
     },
     t3: {
       friendly: `📢 **Calling all Builders & Developers!**\n\nFree live AI workshop for engineers:\n**"Build Your First AI Project in 60 Minutes"**\n\n💡 Hands-on with modern AI frameworks.\nBuild a real project. Add it to your portfolio.\n\nRegister with our club code for priority access:\n👉 ${appOrigin}/?screen=registration&ref=NITT-ROBO-CLUB\n\nOnly 500 spots total! 🔥`,
-      professional: `📢 **Technical Notice: Campus Club AI Masterclass**\n\nIn partnership with NxtWave, our club is pleased to present:\n**"Build Your First AI Project in 60 Minutes"**\n\nObjective: Fast-paced, project-driven orientation to contemporary AI workflows and tools.\n\nClub members may register with priority verification using our code:\n👉 ${appOrigin}/?screen=registration&ref=NITT-ROBO-CLUB\n\nRegistration limit: 500 nationwide cohort seats.`,
+      professional: `📢 **Technical Notice: Campus Club AI Workshop**\n\nOur club is pleased to present NxtWave's live workshop:\n**"Build Your First AI Project in 60 Minutes"**\n\nObjective: Fast-paced, project-driven orientation to contemporary AI workflows and tools.\n\nClub members may register with code:\n👉 ${appOrigin}/?screen=registration&ref=NITT-ROBO-CLUB\n\nRegistration limit: 500 nationwide cohort seats.`,
       energetic: `⚡ **HACKATHON & CODING CLUB ALERT!** 🚀\n\nGet ready to build! NxtWave is hosting:\n**"Build Your First AI Project in 60 Minutes"**\n\n🛠️ Zero fluff, 100% hands-on build lab.\nWalk away with code you built yourself in 60 minutes flat!\n\nUse our club code for instant registration:\n👉 ${appOrigin}/?screen=registration&ref=NITT-ROBO-CLUB\n\nClaim your spot NOW! 💥`
     },
     t4: {
       friendly: `🎓 Attention Students!\n\nNxtWave offers a free, beginner-friendly live workshop:\n**"Build Your First AI Project in 60 Minutes"**\n\n📅 Live interactive online session — 60 minutes.\n🆓 Cost: Completely FREE.\n🎯 Any student can join — no experience needed.\n\nLimited to 500 students across all colleges:\n${appOrigin}/?screen=registration ✅`,
-      professional: `🎓 **Academic Community Circular**\n\nSubject: Complimentary Student AI Workshop\n\nStudents across engineering disciplines are invited to attend:\n**"Build Your First AI Project in 60 Minutes"**\n\n• Session duration: 60 minutes\n• Format: Live interactive instruction\n• Prerequisites: None\n• Certification of participation provided\n\nEnrollment portal (500 capacity):\n${appOrigin}/?screen=registration`,
+      professional: `🎓 **Academic Community Circular**\n\nSubject: Complimentary Student AI Workshop\n\nStudents across engineering disciplines are invited to attend:\n**"Build Your First AI Project in 60 Minutes"**\n\n• Session duration: 60 minutes\n• Format: Live interactive instruction\n• Prerequisites: None (Beginner-friendly)\n\nEnrollment portal (500 capacity):\n${appOrigin}/?screen=registration`,
       energetic: `🎓 **CAMPUS COMMUNITY SHOUTOUT!** ⚡\n\nCurious about AI but don't know where to start?\nJoin NxtWave's live 60-minute build session:\n**"Build Your First AI Project in 60 Minutes"**\n\n🔥 100% Free. Live coding. Real takeaways.\n\nLock in your seat right now before registration closes:\n${appOrigin}/?screen=registration 🚀`
     },
     t5: {
@@ -525,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div>
                 <div class="flex items-center gap-1.5">
                   <span class="font-bold text-navy-900">${record.name}</span>
-                  ${record.isLiveUser ? '<span class="px-1.5 py-0.2 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">LIVE USER</span>' : ''}
+                  ${record.isLiveUser ? '<span class="px-1.5 py-0.2 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">LIVE USER</span>' : '<span class="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-slate-100 text-slate-500 border border-slate-200">DEMO</span>'}
                 </div>
                 <span class="text-slate-500 text-[11px]">${record.email}</span>
               </div>
@@ -667,7 +669,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.copy-rep-code-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const code = btn.getAttribute('data-code');
-        const origin = window.location.origin || 'http://localhost:3000';
+        const origin = (typeof window !== 'undefined' && window.location.origin && window.location.origin !== 'null')
+          ? window.location.origin
+          : 'https://campusai-growth-engine.onrender.com';
         const url = `${origin}/?screen=registration&ref=${code}`;
         navigator.clipboard.writeText(url).then(() => {
           showToast(`Copied referral link for ${code}`);
@@ -680,9 +684,11 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         const code = btn.getAttribute('data-code');
         const name = btn.getAttribute('data-name');
-        const origin = window.location.origin || 'http://localhost:3000';
+        const origin = (typeof window !== 'undefined' && window.location.origin && window.location.origin !== 'null')
+          ? window.location.origin
+          : 'https://campusai-growth-engine.onrender.com';
         const url = `${origin}/?screen=registration&ref=${code}`;
-        const text = `🚀 Hey! I'm sharing a free pass for the NxtWave workshop: "Build Your First AI Project in 60 Minutes".\n\nUse my referral code ${code} to register free:\n${url}\n\nSeats are limited — register now! ⚡`;
+        const text = `🚀 Hey! I'm sharing a free registration link for the NxtWave workshop: "Build Your First AI Project in 60 Minutes".\n\nUse my referral code ${code} to register free:\n${url}\n\nSeats are limited — register now! ⚡`;
         window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
       });
     });
